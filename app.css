@@ -1,0 +1,21 @@
+/* The pad is paper: white in both themes, like signing a real document. */
+.pad { position: relative; height: 280px; border-radius: 14px; background: #fff; border: 1px solid var(--line-strong); overflow: hidden; touch-action: none; }
+.pad canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; touch-action: none; z-index: 1; }
+.pad.typing canvas { cursor: default; }
+.pad-line { position: absolute; left: 7%; right: 7%; top: 74%; border-bottom: 1.5px dashed #c9ced6; pointer-events: none; }
+.pad-line span { position: absolute; left: -4px; bottom: 4px; color: #aab1bb; font-size: 14px; }
+.pad-hint { position: absolute; inset: 0; display: grid; place-items: center; color: #aab1bb; font-size: 22px; font-weight: 500; pointer-events: none; letter-spacing: .02em; }
+@media (max-width: 560px) { .pad { height: 220px; } }
+
+.swatches { display: inline-flex; gap: 6px; }
+.sw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong); }
+.sw[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--accent); }
+
+.result { display: grid; place-items: center; min-height: 160px; padding: 20px; border-radius: 12px; border: 1px solid var(--line); }
+.result img { max-width: 100%; max-height: 220px; object-fit: contain; }
+[data-theme="dark"] .result.checker { background-color: #e9ecf0; background-image:
+  linear-gradient(45deg, #d6dae0 25%, transparent 25%), linear-gradient(-45deg, #d6dae0 25%, transparent 25%),
+  linear-gradient(45deg, transparent 75%, #d6dae0 75%), linear-gradient(-45deg, transparent 75%, #d6dae0 75%); }
+[data-theme="dark"] .result .empty { color: #6d7581; }
+[data-theme="dark"] .result .empty b { color: #22272d; }
+#drawOpts .field.grow { min-width: 220px; }

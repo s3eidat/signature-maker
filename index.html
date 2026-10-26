@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Signature Maker — Draw or Type a Signature, Download Transparent PNG | S3eidat Tools</title>
+<meta name="description" content="Draw your signature with a smooth pen or type it in a handwriting font, then download a trimmed transparent PNG or SVG. Free, private, nothing uploaded or saved.">
+<meta property="og:title" content="Signature Maker — free, private e-signature image">
+<meta property="og:description" content="Draw or type a signature and get a clean transparent PNG or SVG. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="signature-maker">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Signature Maker</h1>
+    <p>Draw your signature with a mouse, finger or stylus, or type it in a handwriting font. Get a trimmed, transparent PNG or SVG to drop into documents.</p>
+    <div class="s3-badges"><span class="chip accent"><svg class="i"><use href="#i-lock"/></svg>Never uploaded, never stored</span><span class="chip">Pressure &amp; speed aware pen</span><span class="chip">Transparent PNG / SVG</span></div>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <div class="seg" id="mode" role="group" aria-label="Mode">
+        <button aria-pressed="true" data-v="draw">Draw</button>
+        <button aria-pressed="false" data-v="type">Type</button>
+      </div>
+      <div class="row">
+        <span class="swatches" role="group" aria-label="Ink colour">
+          <button class="sw" data-c="#111111" aria-label="Black ink"></button>
+          <button class="sw" data-c="#1d3a8a" aria-label="Blue ink"></button>
+          <button class="sw" data-c="#0b2545" aria-label="Navy ink"></button>
+        </span>
+        <label class="check">Ink <input type="color" id="color" aria-label="Ink colour"></label>
+      </div>
+    </div>
+
+    <div class="row mt" id="drawOpts">
+      <label class="field grow"><span class="row between">Pen width <span class="faint" id="widthVal"></span></span><input type="range" id="width" min="1" max="12" step="0.5"></label>
+      <label class="check"><input type="checkbox" id="dynamic" checked> Vary width with speed &amp; pressure</label>
+    </div>
+    <div class="grid-3 mt" id="typeOpts" hidden>
+      <label class="field">Your name<input class="input" id="text" dir="auto" maxlength="60" placeholder="Jane Appleseed"></label>
+      <label class="field">Font<select class="select" id="font"></select></label>
+      <label class="field"><span class="row between">Size <span class="faint" id="sizeVal"></span></span><input type="range" id="size" min="28" max="120" step="2"></label>
+    </div>
+
+    <div class="pad mt" id="pad">
+      <canvas id="cv" aria-label="Signature pad" tabindex="0"></canvas>
+      <div class="pad-line" aria-hidden="true"><span>✕</span></div>
+      <div class="pad-hint" id="hint">Sign here</div>
+    </div>
+
+    <div class="row mt">
+      <button class="btn" id="undo" title="Undo (Ctrl+Z)"><svg class="i"><use href="#i-refresh"/></svg>Undo</button>
+      <button class="btn" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+      <span class="grow"></span>
+      <button class="btn" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy PNG</button>
+      <button class="btn" id="svg"><svg class="i"><use href="#i-download"/></svg>SVG</button>
+      <button class="btn primary" id="png"><svg class="i"><use href="#i-download"/></svg>Download PNG</button>
+    </div>
+  </section>
+
+  <section class="card mt">
+    <div class="row between"><h2>Result <small>trimmed, transparent</small></h2><span class="chip" id="dims">—</span></div>
+    <div class="result checker" id="result"><div class="empty"><b>Nothing yet</b>Draw or type your signature above.</div></div>
+    <p class="faint mt">Your signature is never saved or uploaded: refresh the page and it's gone. Only the pen settings are remembered.</p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
